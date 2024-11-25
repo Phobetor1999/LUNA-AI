@@ -89,7 +89,7 @@ Integrazione dei Layers
 # Struttura del Progetto
 La struttura delle cartelle del progetto Luna-AI è stata progettata per separare chiaramente i vari engine, layers e i moduli di supporto (helpers). 
 Ogni sezione ha uno scopo specifico e ogni file contiene il codice per implementare una funzionalità ben definita. La struttura finale è la seguente:
-
+<PRE>
 LUNA-AI/
 ├── Assets/
 |   ├── Abstraction/
@@ -145,7 +145,7 @@ LUNA-AI/
 ├── Luna_AI_main.py
 ├── requirements.txt
 └── PROJECT.md
-
+</PRE>
 # Decisioni strutturali e Motivationi
 
 ## 1. Sottocartella Assets/Abstaction:
