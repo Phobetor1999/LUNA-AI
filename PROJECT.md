@@ -8,7 +8,7 @@ una gestione asincrona delle attività.
 
 # Architettura del Progetto "Luna"
 
-1. Engines di Basso Livello (Hardware/Fisico)
+## 1. Engines di Basso Livello (Hardware/Fisico)
 
  Questi sono i componenti fondamentali che permettono a Luna di funzionare. Rappresentano la "fisicità" dell'intelligenza artificiale, che include:
 
@@ -29,7 +29,7 @@ una gestione asincrona delle attività.
  Questi componenti di basso livello creano la base fisica su cui gli altri livelli più complessi possono costruire sopra.
 
 
-2. Strato dell'Inconscio
+## 2. Strato dell'Inconscio
   Questo livello simulerà un tipo di "reazione automatica", simile a un istinto, che guida Luna in situazioni in cui la razionalità non è completamente necessaria. Può includere:
 
  - Heuristiche di risposta automatica: Luna può rispondere in modo rapido e automatico a comandi ripetitivi o predefiniti.
@@ -39,7 +39,7 @@ una gestione asincrona delle attività.
  Questo strato non deve essere "consapevole", ma semplicemente reattivo e programmato per rispondere velocemente a situazioni comuni.
 
 
-3. Strato dell'Emotività e dell'Empatia
+## 3. Strato dell'Emotività e dell'Empatia
  Simula le emozioni e la capacità di comprendere quelle altrui. Si basa su un sistema che riconosce segnali emotivi nelle conversazioni e reagisce di conseguenza.
 
  - Analisi del tono di voce: Usare il STT per rilevare variazioni nel tono e nel ritmo della voce dell’utente per dedurre l'emozione.
@@ -49,7 +49,7 @@ una gestione asincrona delle attività.
  - Modeling emozionale: Utilizzo di modelli psicologici per determinare possibili emozioni, come tristezza, felicità, frustrazione, ecc.
 
 
-4. Strato della Memoria Soggettiva
+## 4. Strato della Memoria Soggettiva
  Questo livello sarà simile alla memoria a lungo termine di un individuo, dove Luna memorizza informazioni importanti che si basano sulle interazioni passate e le esperienze.
 
  - Memorizzazione contestuale: Luna può "ricordare" cosa ha detto l'utente in precedenti conversazioni o contesti. E.g., "Ti piace il gelato alla fragola".
@@ -57,7 +57,7 @@ una gestione asincrona delle attività.
  - Aggiornamento dinamico: Luna dovrebbe essere in grado di aggiornare questa memoria sulla base di nuovi input, cambiamenti nelle preferenze o esperienze.
  
  
-5. Strato del Ragionamento Logico
+## 5. Strato del Ragionamento Logico
  Questo strato è dedicato alla parte "razionale" di Luna, che elabora e analizza i dati per prendere decisioni logiche e risolvere problemi complessi.
 
  - Ragionamento deduttivo e induttivo: Luna potrebbe avere la capacità di trarre conclusioni in modo logico, utilizzando la deduzione (partire da principi generali per arrivare a conclusioni specifiche) o l'induzione (analizzare esempi concreti per arrivare a una regola generale).
@@ -67,7 +67,7 @@ una gestione asincrona delle attività.
  - Ragionamento causale: Identificare le cause di certi fenomeni o comportamenti.
 
 
-6. Strato Cognitivo
+## 6. Strato Cognitivo
  Questo è il livello più "intelligente" e profondo, in cui Luna può usare la sua memoria, le sue emozioni, e il ragionamento logico per prendere decisioni e rispondere in maniera più intelligente.
 
  - Capacità di apprendimento: Luna può migliorare nel tempo, apprendendo da nuove esperienze, feedback e modificando il proprio comportamento.
@@ -77,7 +77,7 @@ una gestione asincrona delle attività.
  - Comprensione contestuale profonda: La combinazione di tutti gli strati permette a Luna di comprendere non solo le parole dell’utente, ma anche il significato profondo dietro le azioni, le emozioni e le situazioni.
 
 
-Integrazione dei Layers
+# Integrazione dei Layers
  Questi strati lavoreranno insieme in maniera fluida. Ecco come possono interagire:
 
  - Interazione tra strati: Gli strati di basso livello, come il riconoscimento vocale e TTS, interagiscono direttamente con gli strati superiori come la memoria e l'emotività. Ad esempio, se Luna riconosce un tono di tristezza, lo strato emotivo lo comunica al sistema, che attiverà risposte più empatiche.
@@ -172,7 +172,8 @@ LUNA-AI/
 
  - Motivazione: I layers di Luna-AI rappresentano vari livelli di elaborazione e simulano i processi cognitivi, emotivi e logici di un'intelligenza artificiale simile alla mente umana. Sono stati separati in layer distinti per permettere una gestione modulare dei vari aspetti dell'AI.
 
-.
+
+
 
 # Funzioni e Compiti dei File
 
@@ -239,7 +240,9 @@ LUNA-AI/
 
  - Ogni cartella di engine e layer contiene un file README.md, che descrive il funzionamento del componente specifico, le sue dipendenze, configurazioni e come interagisce con gli altri moduli. Questo permette una facile comprensione e manutenzione del sistema.
 
-.
+
+
+
 
 # Futuri sviluppi e miglioramenti
 
@@ -255,7 +258,9 @@ LUNA-AI/
  ## Ottimizzazione delle Risorse: 
  In futuro, sarà possibile migliorare ulteriormente la gestione delle risorse, ottimizzando l'uso della message queue e migliorando l'interazione tra i vari engine per ridurre il carico sui processori.
 
-.
+
+
+
 
 # Conclusioni
 Il progetto Luna-AI è stato progettato per essere un sistema complesso e modulare che simula vari aspetti del comportamento umano, utilizzando un'architettura basata su engine e layer separati. Ogni componente è pensato per funzionare come un processo indipendente, migliorando l'efficienza e la scalabilità del sistema. La struttura del progetto e le scelte architetturali consentono una rapida espansione, manutenzione e aggiornamenti futuri, rendendo Luna-AI una base solida per lo sviluppo di un assistente virtuale avanzato.
