@@ -5,8 +5,6 @@ import webrtcvad
 from Assets.Abstraction.Process.processBase import NeuralProcess
 from Assets.Helpers.ConfigurationHelper.config_loader import loadConfiguration
 
-
-
 class Hear_Engine(NeuralProcess):
     def __init__(self, config_dir):
         super().__init__()
