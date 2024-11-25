@@ -1,0 +1,1 @@
+### STRATO DELLA LOGICA di Luna-AI (LogicallLayer)

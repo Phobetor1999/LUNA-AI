@@ -1,0 +1,27 @@
+# Hear Engine config.yaml
+
+audio_settings:
+  sample_rate: 16000
+  channels: 1
+  block_size: 1024
+  # vad_mode
+  # Modalità aggressiva per VAD (da 0 a 3)
+  vad_mode: 3
+
+speaker_recognition:
+  focus_speaker_id: "speaker1"
+  # threshold
+  # Soglia di riconoscimento parlante
+  threshold: 0.75  
+
+transcription:
+  # min_words
+  # Minimo numero di parole per considerare "senso compiuto"
+  min_words: 3  
+  # whisper_model
+  # Modello Whisper da utilizzare (tiny   - Molto veloce, ma meno accurato. 
+  #                                base   - Bilanciato per velocità e precisione.
+  #                                small  - Più accurato, ma più lento.
+  #                                medium - Alta precisione, richiede più risorse.
+  #                                large  - Massima precisione, utilizza molta memoria.
+  whisper_model: "base"  

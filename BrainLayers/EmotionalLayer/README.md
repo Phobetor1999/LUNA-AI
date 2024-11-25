@@ -1,0 +1,1 @@
+### STRATO EMPATICO/EMOZIONALE di Luna-AI (EmotionalLayer)
