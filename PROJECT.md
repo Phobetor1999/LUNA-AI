@@ -1,5 +1,6 @@
 
 # File: LUNA-AI/PROJECT.md
+
 # Progetto Luna-AI: Overview
 Luna-AI è un assistente virtuale complesso che si compone di diverse componenti, strutturate in engine, layers e processi separati, al fine di simulare 
 un ragionamento multi-livello che integra aspetti cognitivi, emotivi, logici e istintivi. 
@@ -91,64 +92,108 @@ La struttura delle cartelle del progetto Luna-AI è stata progettata per separar
 Ogni sezione ha uno scopo specifico e ogni file contiene il codice per implementare una funzionalità ben definita. La struttura finale è la seguente:
 <PRE>
 LUNA-AI/
-├── Docs/                                                       # Directory di progetto contenente la documentazione.
-|   ├── PROJECT_SETUP.md                                        # Documentazione di guida al setup del progetto.
-│   └── TTS_SETUP.md
-├── Assets/                                                     # Directory del progetto contenente gli assets di basso livello nececessari.
-|   ├── Abstraction/                                            # Directory del progetto contenente gli assets e le classi Astratte di Luna-AI
-│   |   ├── Process/                                            # Directory del progetto contenente l'Astrazione di base dei processi di Luna-AI 
-|   │   |   ├── README.md                                       # Introduzione al processBase astratto di Luna-AI
-│   |   │   └── processBase.py                                  # Processo astratto di base ereditato da tutti i Brain layers e gli engines di basso livello di Luna-AI
-│   ├── CognitiveEngines/                                       
-│   │   │   ├── README.md
-│   │   |   └── __init__.py
-│   │   ├── Hear/
-│   │   │   ├── README.md
-│   │   │   ├── config.yaml
-│   │   │   └── hear_engine.py
-│   │   ├── Speech/
-│   │   │   ├── README.md
-│   │   │   ├── config.yaml
-│   │   │   └── speech_engine.py
-│   │   ├── Vision/
-│   │   │   ├── README.md
-│   │   │   ├── config.yaml
-│   │   │   └── vision_engine.py
-│   ├── Helpers/
-│   │   ├── README.md
-│   │   ├── ConfigurationHelper/
-│   │   │   ├── README.md
-│   │   |   └── config_loader.py
-│   │   ├── message_queue.py
-│   │   ├── async_utils.py
-│   │   └── logger.py
-│   ├── Models/                                           # Directory contenitore per i modelli addestrati e moduli specifici
-│   │   └── __init__.py
-│   ├── Config/
-│   └── Data/
-├── BrainLayers/
-│   ├── __init__.py
-│   ├── UnconsciousLayer/
-│   │   ├── README.md                                     # Introduzione al layer pensieri inconsci di Luna-AI
-│   │   └── unconscious_layer.py                          # Layer dei pensieri inconsci di Luna-AI
-│   ├── EmotionalLayer/
-│   │   ├── README.md                                     # Introduzione al layer emozionale/empatico di Luna-AI
-│   │   └── emotional_layer.py                            # Layer dei emozionale/empatico di Luna-AI
-│   ├── MemoryLayer/
-│   │   ├── README.md                                     # Introduzione al layer dei pensieri memonici di Luna-AI
-│   │   └── memory_layer.py                               # Layer dei pensieri memonici di Luna-AI
-│   ├── LogicalLayer/
-│   │   ├── README.md                                     # Introduzione al layer dei pensieri logici di Luna-AI
-│   │   └── logical_layer.py                              # Layer dei pensieri logici di Luna-AI
-│   |── CognitiveLayer/
-│   |   ├── README.md                                     # Introduzione al layer logico cognitivo di Luna-AI
-│   |   └── cognitive_layer.py                            # Layer cognitivo di Luna-AI
-│   ├── SelfReflectionLayer/
-│   │   ├── README.md                                     # Introduzione al layer logico delle riflessioni personali e introspettive di Luna-AI
-│   │   └── SelfReflection_layer.py                       # Layer delle riflessioni personali e introspettive di Luna-AI
 ├── Luna_AI_main.py                                       # File principale del progetto
 ├── requirements.txt                                      # Dipendenze globali
-└── PROJECT.md                                            # Introduzione al progetto
+├── PROJECT.md                                            # Introduzione al progetto
+│   
+├── Docs/                                                 # Directory di progetto contenente la documentazione.
+│   ├── PROJECT_SETUP.md                                  # Documentazione di guida al setup del progetto.
+│   └── TTS_SETUP.md
+│
+├── Assets/                                               # Directory del progetto contenente gli assets di basso livello nececessari.
+│   │
+│   ├── Abstraction/                                      # Directory del progetto contenente gli assets e le classi Astratte di Luna-AI
+│   │   └── Process/                                      # Directory del progetto contenente l'Astrazione di base dei processi di Luna-AI 
+│   │       ├── README.md                                 # Introduzione al processBase astratto di Luna-AI
+│   │       ├── __init__.py
+│   │       └── processBase.py                            # Processo astratto di base ereditato da tutti i Brain layers e gli engines di basso livello di Luna-AI
+│   │
+│   ├── CognitiveEngines/                                       
+│   │   │   ├── README.md
+│   │   │
+│   │   ├── Hear/
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── config.yaml
+│   │   │   └── hear_engine.py
+│   │   │
+│   │   ├── Speech/
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── config.yaml
+│   │   │   └── speech_engine.py
+│   │   │
+│   │   └── Vision/
+│   │       ├── README.md
+│   │       ├── __init__.py
+│   │       ├── config.yaml
+│   │       └── vision_engine.py
+│   │
+│   ├── Helpers/
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── message_queue.py
+│   │   ├── async_utils.py
+│   │   ├── logger.py
+│   │   │
+│   │   └── ConfigurationHelper/
+│   │       ├── README.md
+│   │       ├── __init__.py
+│   │       └── config_loader.py
+│   │
+│   ├── Models/                                           # Directory contenitore per i modelli addestrati e moduli specifici
+│   │   ├── whisper_env/
+│   │   └── __init__.py
+│   │
+│   ├── Config/
+│   │
+│   └── Data/
+│
+├── BrainLayers/
+│   ├── __init__.py
+│   │
+│   ├── UnconsciousLayer/
+│   │   ├── README.md                                     # Introduzione al layer pensieri inconsci di Luna-AI
+│   │   ├── __init__.py
+│   │   └── unconscious_layer.py                          # Layer dei pensieri inconsci di Luna-AI
+│   │
+│   ├── EmotionalLayer/
+│   │   ├── README.md                                     # Introduzione al layer emozionale/empatico di Luna-AI
+│   │   ├── __init__.py
+│   │   └── emotional_layer.py                            # Layer dei emozionale/empatico di Luna-AI
+│   │
+│   ├── MemoryLayer/
+│   │   ├── README.md                                     # Introduzione al layer dei pensieri memonici di Luna-AI
+│   │   ├── __init__.py
+│   │   └── memory_layer.py                               # Layer dei pensieri memonici di Luna-AI
+│   │
+│   ├── LogicalLayer/
+│   │   ├── README.md                                     # Introduzione al layer dei pensieri logici di Luna-AI
+│   │   ├── __init__.py
+│   │   └── logical_layer.py                              # Layer dei pensieri logici di Luna-AI
+│   │
+│   ├── CognitiveLayer/
+│   │   ├── README.md                                     # Introduzione al layer logico cognitivo di Luna-AI
+│   │   ├── __init__.py
+│   │   └── cognitive_layer.py                            # Layer cognitivo di Luna-AI
+│   │
+│   └── SelfReflectionLayer/
+│       ├── README.md                                     # Introduzione al layer logico delle riflessioni personali e introspettive di Luna-AI
+│       ├── __init__.py
+│       └── SelfReflection_layer.py                       # Layer delle riflessioni personali e introspettive di Luna-AI
+│    
+└── TestEnv/
+    ├── TestMain.py                                       # Punto di ingresso per l'esecuzione dei test
+    ├── config_test.yaml                                  # File di configurazione per i test
+    │
+    ├── Test_HearEngine/                                  # Cartella con i test specifici per Hear_Engine
+    │   └── test_hear_engine.py                           # File con i test definiti
+    │
+    ├── Test_AnotherModule/                               # Altra cartella per test di altri moduli
+    │   └── test_another_module.py
+    │
+    └── TestData/                                         # Cartella con file di test audio o altri dati di test
+        └── dummy_audio.wav
 </PRE>
 # Decisioni strutturali e Motivationi
 

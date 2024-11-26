@@ -13,11 +13,11 @@ class NeuralProcess(ABC):
         pass
 
     @abstractmethod
-    async def handle_stimulus(self, message):
+    async def handleStimulus(self, message):
         """Gestisce il messaggio ricevuto dal processo."""
         pass
 
-    async def send_stimulus(self, message):
+    async def sendStimulus(self, message):
         """Metodo per la comunicazione tra i vari processi neurali."""
         await self._stimulus_queue.put(message)
 

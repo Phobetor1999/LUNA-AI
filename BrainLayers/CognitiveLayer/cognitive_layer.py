@@ -3,11 +3,12 @@ from Assets.CognitiveEngines.Vision.vision_engine import VisionEngine
 from Assets.CognitiveEngines.Hear.hear_engine     import Hear_Engine
 from Assets.CognitiveEngines.Speech.speech_engine import Speech_Engine
 
+# Classe derivata che simula il layer del processo Cognitivo del cervello
 class CognitiveLayer(NeuralProcess):
     def __init__(self):
         super().__init__()
         self.vision_engine = VisionEngine()
-        self.stt_engine    = Hear_Engine()
+        self.stt_engine    = Hear_Engine("")
         self.tts_engine    = Speech_Engine()
 
     async def initialize(self):

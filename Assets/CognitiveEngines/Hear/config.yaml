@@ -24,4 +24,4 @@ transcription:
   #                                small  - Più accurato, ma più lento.
   #                                medium - Alta precisione, richiede più risorse.
   #                                large  - Massima precisione, utilizza molta memoria.
-  whisper_model: "base"  
+  whisper_model: "medium"  

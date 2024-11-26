@@ -2,6 +2,10 @@ import asyncio
 from BrainLayers.CognitiveLayer.cognitive_layer import CognitiveLayer
 from BrainLayers.EmotionalLayer.emotional_layer import Emotional_Layer
 
+import whisper
+
+model = whisper.load_model("base")
+print("Modello Whisper caricato correttamente!")
 
 async def main():
     # Crea i vari processi neurali (layer del cervello)

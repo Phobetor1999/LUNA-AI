@@ -1,7 +1,7 @@
 import asyncio
 from Assets.Abstraction.Process.processBase import NeuralProcess
 
-# Un esempio di classe derivata che simula un layer del cervello
+# Classe derivata che simula il layer del processo Emozionale/Emptatico del cervello
 class EmotionalLayer(NeuralProcess):
     def __init__(self, layer_name):
         super().__init__()

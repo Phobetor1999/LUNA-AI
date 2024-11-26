@@ -19,9 +19,10 @@
 ## Funzionamento
     Stimoli Diversificati:
 
-    - Immagini (type: "image") → Inviate al VisionEngine.
-    - Audio    (type: "audio") → Inviati al SpeechToTextEngine.
-    - Testo    (type: "text")  → Inviato al TextToSpeechEngine.
+    - Immagini (type: "image")  → Inviate al VisionEngine.
+    - Audio    (type: "audio")  → Inviati al SpeechToTextEngine.
+    - Testo    (type: "text")   → Inviato al TextToSpeechEngine.
+    - Binario  (type: "binary") → Inviato a ??.
 
 ## Parallelismo Naturale:
     I motori lavorano indipendentemente.
