@@ -91,12 +91,15 @@ La struttura delle cartelle del progetto Luna-AI è stata progettata per separar
 Ogni sezione ha uno scopo specifico e ogni file contiene il codice per implementare una funzionalità ben definita. La struttura finale è la seguente:
 <PRE>
 LUNA-AI/
-├── Assets/
-|   ├── Abstraction/
-│   |   ├── Process/
-|   │   |   ├── README.md
-│   |   │   └── processBase.py
-│   ├── CognitiveEngines/
+├── Docs/                                                       # Directory di progetto contenente la documentazione.
+|   ├── PROJECT_SETUP.md                                        # Documentazione di guida al setup del progetto.
+│   └── TTS_SETUP.md
+├── Assets/                                                     # Directory del progetto contenente gli assets di basso livello nececessari.
+|   ├── Abstraction/                                            # Directory del progetto contenente gli assets e le classi Astratte di Luna-AI
+│   |   ├── Process/                                            # Directory del progetto contenente l'Astrazione di base dei processi di Luna-AI 
+|   │   |   ├── README.md                                       # Introduzione al processBase astratto di Luna-AI
+│   |   │   └── processBase.py                                  # Processo astratto di base ereditato da tutti i Brain layers e gli engines di basso livello di Luna-AI
+│   ├── CognitiveEngines/                                       
 │   │   │   ├── README.md
 │   │   |   └── __init__.py
 │   │   ├── Hear/
@@ -119,32 +122,33 @@ LUNA-AI/
 │   │   ├── message_queue.py
 │   │   ├── async_utils.py
 │   │   └── logger.py
-│   ├── models/
-│   ├── config/
-│   └── data/
+│   ├── Models/                                           # Directory contenitore per i modelli addestrati e moduli specifici
+│   │   └── __init__.py
+│   ├── Config/
+│   └── Data/
 ├── BrainLayers/
 │   ├── __init__.py
 │   ├── UnconsciousLayer/
-│   │   ├── README.md
-│   │   └── unconscious_layer.py
+│   │   ├── README.md                                     # Introduzione al layer pensieri inconsci di Luna-AI
+│   │   └── unconscious_layer.py                          # Layer dei pensieri inconsci di Luna-AI
 │   ├── EmotionalLayer/
-│   │   ├── README.md
-│   │   └── emotional_layer.py
+│   │   ├── README.md                                     # Introduzione al layer emozionale/empatico di Luna-AI
+│   │   └── emotional_layer.py                            # Layer dei emozionale/empatico di Luna-AI
 │   ├── MemoryLayer/
-│   │   ├── README.md
-│   │   └── memory_layer.py
+│   │   ├── README.md                                     # Introduzione al layer dei pensieri memonici di Luna-AI
+│   │   └── memory_layer.py                               # Layer dei pensieri memonici di Luna-AI
 │   ├── LogicalLayer/
-│   │   ├── README.md
-│   │   └── logical_layer.py
+│   │   ├── README.md                                     # Introduzione al layer dei pensieri logici di Luna-AI
+│   │   └── logical_layer.py                              # Layer dei pensieri logici di Luna-AI
 │   |── CognitiveLayer/
-│   |   ├── README.md
-│   |   └── cognitive_layer.py
+│   |   ├── README.md                                     # Introduzione al layer logico cognitivo di Luna-AI
+│   |   └── cognitive_layer.py                            # Layer cognitivo di Luna-AI
 │   ├── SelfReflectionLayer/
-│   │   ├── README.md
-│   │   └── SelfReflection_layer.py
-├── Luna_AI_main.py
-├── requirements.txt
-└── PROJECT.md
+│   │   ├── README.md                                     # Introduzione al layer logico delle riflessioni personali e introspettive di Luna-AI
+│   │   └── SelfReflection_layer.py                       # Layer delle riflessioni personali e introspettive di Luna-AI
+├── Luna_AI_main.py                                       # File principale del progetto
+├── requirements.txt                                      # Dipendenze globali
+└── PROJECT.md                                            # Introduzione al progetto
 </PRE>
 # Decisioni strutturali e Motivationi
 

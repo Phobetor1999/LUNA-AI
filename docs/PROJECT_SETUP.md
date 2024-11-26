@@ -51,7 +51,7 @@ python -m pip install virtualenv
 
 #### [Step 1.2.2] Crea un ambiente virtuale nella directory del progetto:
 ```console
-python -m virtualenv venv
+python -m virtualenv luna_env
 ```
 </LI>
 <LI>
@@ -59,11 +59,11 @@ python -m virtualenv venv
 #### [Step 1.2.3] Attiva l'ambiente virtuale:
 - Windows:
 ```console
-.\venv\Scripts\activate
+.\luna_env\Scripts\activate
 ```
 - Linux:
 ```console
-source venv/bin/activate
+source luna_env/bin/activate
 ```
 </LI>
 </UL> 
