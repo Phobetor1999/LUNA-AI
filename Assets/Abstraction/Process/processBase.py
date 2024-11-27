@@ -11,9 +11,9 @@ class NeuralProcess(ABC):
     Classe astratta per definire la struttura base di un processo neurale. 
     """
 
-    _script_path    = None  # Percorso del file script 
-    _am_i_active    = False # Flag che indica se il processo Neurale è attivo (True) o dormiente (False)
-    _stimulus_queue = None  # Variabile per la coda degli stimoli
+    _script_path   = None  # Percorso del file script 
+    _am_i_active   = False # Flag che indica se il processo Neurale è attivo (True) o dormiente (False)
+    _stimuli_queue = None  # Variabile per la coda degli stimoli
 
     @property
     def am_i_active(self):
@@ -38,10 +38,10 @@ class NeuralProcess(ABC):
             raise NotImplementedError(
                 f"[{self.__class__.__name__}] La variabile 'script_path' deve essere definita nella classe concreta."
             )
-        self.config                             = self._loadConfig()
-        self._esternalStimuliDir                = os.path.join(self.script_path, "externalStimuli")
-        self._incoming_stimulus_evaluation_task = None
-        self._stimulus_queue                    = asyncio.Queue()  # Coda per la comunicazione tra processi neurali
+        self.config                         = self._loadConfig()
+        self._esternalStimuliDir            = os.path.join(self.script_path, "externalStimuli")
+        self._incomingStimuliEvaluationTask = None
+        self._stimuli_queue                 = asyncio.Queue()  # Coda per la comunicazione tra processi neurali
         
         # Configurazione del logging
         logging.basicConfig(level=logging.INFO)
@@ -82,10 +82,11 @@ class NeuralProcess(ABC):
                     print(f"[{self.__class__.__name__}] Errore durante la lettura di {filename}: {e}")
                 finally:
                     try:
-                        if os.path.exists(file_path):
+                        if os.Path.exists(file_path):
                             os.remove(file_path)  # Elimina il file dopo la lettura
+                            self.logger.info(f"[{self.__class__.__name__}] File di stimolo esterno rimosso {file_path}: {e}")
                     except Exception as e:
-                        self.logger.warning(f"[{self.__class__.__name__}] Impossibile eliminare il file {filename}: {e}")
+                        self.logger.warning(f"[{self.__class__.__name__}] Impossibile eliminare il file di stimolo esterno {file_path}: {e}")
         return stimuli
 
     async def _evaluateIncomingStimuli(self):
@@ -94,16 +95,17 @@ class NeuralProcess(ABC):
         """
         while self.am_i_active:
             try:            
-                neuralStimuli = await self._stimulus_queue.get()
+                neuralStimuli = await self._stimuli_queue.get()
                 externalStimuli = await self._readExternalStimuli()
                 if neuralStimuli:
-                    await self.handleStimuli(neuralStimuli)
+                    await self.handleSelfStimuli(neuralStimuli)
                 if externalStimuli:
-                    await self.handleStimuli(externalStimuli)
+                    await self.handleExternalStimuli(externalStimuli)
 
             except asyncio.CancelledError:
                 self.logger.info(f"[{self.__class__.__name__}] Valutazione stimoli interrotta.")
                 break
+
             except Exception as e:
                 self.logger.error(f"[{self.__class__.__name__}] Errore durante la valutazione degli stimoli: {e}")
 
@@ -119,9 +121,9 @@ class NeuralProcess(ABC):
         pass
 
     @abc.abstractmethod
-    async def handleStimuli(self, message):
+    async def handleSelfStimuli(self, message):
         """
-        Gestisce lo stimolo neurale presente nella Message Queue degli stimoli. 
+        Gestisce lo Stimolo Neurale presente nella Message Queue degli stimoli interiori. 
         Al momento del richiamo di questo metodo il Processo Neurale 
         ancora non sa se è uno stimolo che deve tenere in considerazione ed elaborare.
         Qui dentro deve essere definita la logica check che serve al Processo Neurale per 
@@ -132,13 +134,26 @@ class NeuralProcess(ABC):
         """
         pass
 
+    @abc.abstractmethod
+    async def handleExternalStimuli(self, message):
+        """
+        Gestisce lo Stimolo Neurale presente nella Message Queue degli stimoli esterni. 
+        Al momento del richiamo di questo metodo il Processo Neurale 
+        ancora non sa se è uno stimolo che deve tenere in considerazione ed elaborare.
+        Qui dentro deve essere definita la logica check che serve al Processo Neurale per 
+        capire se lo stimolo deve essere considerato e la propria logica di rielaborazione.
+        Qui si deve richiamare il metodo sendStimuli che invia lo stimolo esterno al message queue
+        con per poter essere processato dal Processo Neurale di competenza.
+        """
+        pass    
+
     async def sendStimuli(self, stimuli):
         """
         Metodo per la comunicazione tra i vari processi neurali.
         :param stimuli: Dizionario con i dati elaborati.
         """
         try:
-            await self._stimulus_queue.put(stimuli)
+            await self._stimuli_queue.put(stimuli)
             self.logger.info(f"[{self.__class__.__name__}] Stimolo inviato: {stimuli}")
         except Exception as e:
             self.logger.error(f"[{self.__class__.__name__}] Errore durante l'invio dello stimolo: {e}")
@@ -158,7 +173,7 @@ class NeuralProcess(ABC):
         self._am_i_active = True
 
         # Avvia il task asincrono per gestire gli stimoli
-        self._incoming_stimulus_evaluation_task = asyncio.create_task(self._evaluateIncomingStimuli())
+        self._incomingStimuliEvaluationTask = asyncio.create_task(self._evaluateIncomingStimuli())
 
     async def sleep(self):
         """
@@ -168,14 +183,14 @@ class NeuralProcess(ABC):
             raise RuntimeError("Il Processo Neurale non è attivo.")        
         
         self._am_i_active = False
-        if self._incoming_stimulus_evaluation_task:
+        if self._incomingStimuliEvaluationTask:
             # Annulla il task
-            self._incoming_stimulus_evaluation_task.cancel()
+            self._incomingStimuliEvaluationTask.cancel()
         try:
-            await self._incoming_stimulus_evaluation_task
+            await self._incomingStimuliEvaluationTask
         except asyncio.CancelledError:
             self.logger.info(f"[{self.__class__.__name__}] Processo messo a riposo.")
         except Exception as e:
             self.logger.error(f"[{self.__class__.__name__}] Errore durante il riposo del processo: {e}")  
         finally:
-            self._incoming_stimulus_evaluation_task = None
+            self._incomingStimuliEvaluationTask = None

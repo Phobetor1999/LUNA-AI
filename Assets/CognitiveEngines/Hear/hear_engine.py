@@ -1,8 +1,12 @@
-import asyncio
-import whisper
-import os
-from   pathlib import Path
 # import webrtcvad
+import sys
+from pathlib import Path
+
+import os
+import json
+import whisper
+from datetime import datetime
+
 
 from Assets.Abstraction.Process.processBase import NeuralProcess
 from Assets.Helpers.ConfigurationHelper.config_loader import loadConfiguration
@@ -10,13 +14,13 @@ from Assets.Helpers.ConfigurationHelper.config_loader import loadConfiguration
 class Hear_Engine(NeuralProcess):
     def __init__(self):
         super().__init__()
-        script_dir = Path(__file__).parent.resolve()                 # Determina la directory corrente dello script
-        config_path = script_dir / "config.yaml"                     # Percorso del file di configurazione
+        self.script_dir = Path(__file__).parent.resolve()            # Determina la directory corrente dello script
+        config_path = self.script_dir / "config.yaml"                     # Percorso del file di configurazione
 
         if not config_path.exists(): raise FileNotFoundError(f"File di configurazione non trovato: {config_path}")
 
         # Carica la configurazione
-        self.config                 = loadConfiguration(script_dir)  # Carica il file config.yaml dalla propria directory
+        self.config                 = loadConfiguration(self.script_dir)  # Carica il file config.yaml dalla propria directory
         self.audio_settings         = self.config["audio_settings"]
         self.transcription_settings = self.config["transcription"]
         self.speaker_settings       = self.config["speaker_recognition"]
